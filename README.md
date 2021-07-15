@@ -36,4 +36,11 @@ Now we can run this [Script](trimmomatic.sl)
 After trimmomatic, we will go into `trim` folder and run [fastqc](fastqc.sl) again to see how has our data improved after trimmomatic.
 If we are happy with the quality of our data then we will process further if not we may need to change some trimming parameters.
 
+## Running Bismark
+
+Next step is to prepare genome using bismark, for this we need to place the genome assembly in a folder lets say `genome`
+and run a job to prepare genome assembly for bismark
+[Script](bismark.sl)
+
+
 
