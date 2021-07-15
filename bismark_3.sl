@@ -16,7 +16,7 @@
 
 module load Bismark/0.22.3-gimkl-2018b
 
-bismark_methylation_extractor -p --comprehensive --gzip --bedGraph \
+bismark_methylation_extractor -p --comprehensive --gzip --bedGraph --parallel 10 \
 Upendra-1_S1_L001_R1_trim_bismark_bt2_pe.bam \
 Upendra-2_S2_L001_R1_trim_bismark_bt2_pe.bam \
 Upendra-3_S3_L001_R1_trim_bismark_bt2_pe.bam \
