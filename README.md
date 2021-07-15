@@ -44,4 +44,4 @@ and run a job to prepare genome assembly for bismark
 
 Next run bismark for each pair of pairend reads with this [Script](bismark_2.sl)
 
-
+Next is to run bismark methylation extractor: [Script](bismark_3.sl)
