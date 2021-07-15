@@ -5,8 +5,8 @@
 #SBATCH --ntasks 10 
 #SBATCH --partition=large,bigmem 
 #SBATCH --job-name bismark
-#SBATCH --mem=50G 
-#SBATCH --time=10:00:00 
+#SBATCH --mem=30G 
+#SBATCH --time=01:00:00 
 #SBATCH --account=uoo02752 
 #SBATCH --output=%x_%j.out 
 #SBATCH --error=%x_%j.err 
