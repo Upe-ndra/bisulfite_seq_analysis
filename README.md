@@ -40,7 +40,8 @@ If we are happy with the quality of our data then we will process further if not
 
 Next step is to prepare genome using bismark, for this we need to place the genome assembly in a folder lets say `genome`
 and run a job to prepare genome assembly for bismark
-[Script](bismark.sl)
+[Script](bismark_1.sl)
 
+Next run bismark for each pair of pairend reads with this [Script](bismark_2.sl)
 
 
