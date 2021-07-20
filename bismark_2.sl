@@ -20,13 +20,13 @@ module load Python/3.9.5-gimkl-2020a
 module load SAMtools/1.12-GCC-9.2.0
 
 bismark --bowtie2 -n 1 /nesi/nobackup/uoo02752/earwig/earwig_bisulfite/trim/genome \
--1 Upendra-1_S1_L001_R1_trim.fastq -2 Upendra-1_S1_L001_R2_trim.fastq
+-1 Upendra-1_S1_L001_R1_trim.fastq -2 Upendra-1_S1_L001_R2_trim.fastq --pbat
 
 bismark --bowtie2 -n 1 /nesi/nobackup/uoo02752/earwig/earwig_bisulfite/trim/genome \
--1 Upendra-2_S2_L001_R1_trim.fastq -2 Upendra-2_S2_L001_R2_trim.fastq
+-1 Upendra-2_S2_L001_R1_trim.fastq -2 Upendra-2_S2_L001_R2_trim.fastq --pbat
 
 bismark --bowtie2 -n 1 /nesi/nobackup/uoo02752/earwig/earwig_bisulfite/trim/genome \
--1 Upendra-3_S3_L001_R1_trim.fastq -2 Upendra-3_S3_L001_R2_trim.fastq
+-1 Upendra-3_S3_L001_R1_trim.fastq -2 Upendra-3_S3_L001_R2_trim.fastq --pbat
 
 bismark --bowtie2 -n 1 /nesi/nobackup/uoo02752/earwig/earwig_bisulfite/trim/genome \
--1 Upendra-4_S4_L001_R1_trim.fastq -2 Upendra-4_S4_L001_R2_trim.fastq
+-1 Upendra-4_S4_L001_R1_trim.fastq -2 Upendra-4_S4_L001_R2_trim.fastq --pbat
