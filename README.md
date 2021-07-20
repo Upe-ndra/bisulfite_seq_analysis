@@ -47,3 +47,5 @@ Next run bismark for each pair of pairend reads with this [Script](bismark_2.sl)
 Next is to run bismark methylation extractor: [Script](bismark_3.sl)
 
 Now time to create report, for this we can just load the module and run `bismark2report` on the directory where all our bismark processing files are located. no need to run it as slurm job as it will only take 10-15 seconds to complete. there are some options to use with this command you can just flag `--help` to learn, for now we will just run `bismark2report` without any options and we will get html reports for each sample.
+
+We can also run `bismark2summary` command without any options in the same directory to summarize the multiple reports into one.
