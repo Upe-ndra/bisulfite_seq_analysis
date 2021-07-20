@@ -42,7 +42,7 @@ Next step is to prepare genome using bismark, for this we need to place the geno
 and run a job to prepare genome assembly for bismark
 [Script](bismark_1.sl)
 
-Next run bismark for each pair of pairend reads with this [Script](bismark_2.sl)
+Next run bismark for each pair of pairend reads with this [Script](bismark_2.sl). while running this script flag `--pbat` can significantly improve the alignment rate, as our library were processed using PBAT method.
 
 Next is to run bismark methylation extractor: [Script](bismark_3.sl)
 
