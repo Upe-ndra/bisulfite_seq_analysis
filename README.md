@@ -36,6 +36,66 @@ Now we can run this [Script](trimmomatic.sl)
 After trimmomatic, we will go into `trim` folder and run [fastqc](fastqc.sl) again to see how has our data improved after trimmomatic.
 If we are happy with the quality of our data then we will process further if not we may need to change some trimming parameters.
 
+However running only trimmomatic with all the available illumina adapters did not remove all the adapters, especially from one file.
+So I tried trimgalore where I also find easy to trim the 3' end of the sequences. However, this also left data with contaminants like `TruSeq Adapter, Index 11` ` Illumina PCR Primer Index 12` and etc. as over represented sequences. So, I tried trimmomatic to remove adapters and used trimgalore to chop 5' and 3' ends and it also remove adapters escaped after trimmomatic. Scripts I used for this process are as below
+1. trimmomatic
+```
+#!/bin/bash -e
+
+#SBATCH --nodes 1
+#SBATCH --cpus-per-task 1
+#SBATCH --ntasks 6
+#SBATCH --partition=bigmem,large
+#SBATCH --job-name Nem.bisulfite
+#SBATCH --mem=50G
+#SBATCH --time=02:00:00
+#SBATCH --account=uoo02752
+#SBATCH --output=%x_%j.out
+#SBATCH --error=%x_%j.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=bhaup057@student.otago.ac.nz
+#SBATCH --hint=nomultithread
+
+mkdir trim
+mkdir unpaired
+
+module load Trimmomatic/0.39-Java-1.8.0_144
+
+for f in $(<names)
+do
+java -jar $EBROOTTRIMMOMATIC/trimmomatic-0.39.jar PE -phred33 -threads 6 \
+"${f}_R1_001.fastq" "${f}_R2_001.fastq" \
+"trim/${f}_R1_trim.fastq" "unpaired/${f}_R1_unpaired.fastq" \
+"trim/${f}_R2_trim.fastq" "unpaired/${f}_R2_unpaired.fastq" \
+ILLUMINACLIP:illumina-all-PE.fa:2:30:10 SLIDINGWINDOW:4:20 MINLEN:20
+```
+2.trimgalore
+```
+#!/bin/bash -e
+
+#SBATCH --nodes 1
+#SBATCH --cpus-per-task 1
+#SBATCH --ntasks 4
+#SBATCH --partition=large
+#SBATCH --job-name Nem.trimgalore
+#SBATCH --mem=50G
+#SBATCH --time=02:00:00
+#SBATCH --account=uoo02752
+#SBATCH --output=%x_%j.out
+#SBATCH --error=%x_%j.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=bhaup057@student.otago.ac.nz
+#SBATCH --hint=nomultithread
+
+module load TrimGalore/0.6.4-gimkl-2018b
+
+
+for f in $(<names)
+do
+trim_galore --clip_R1 9 --clip_R2 9 --three_prime_clip_R1 15 --three_prime_clip_R2 15 --paired --fastqc "${f}_R1_trim.fastq" "${f}_R2_trim.fastq"
+done
+```
+
 ## Running Bismark
 
 Next step is to prepare genome using bismark, for this we need to place the genome assembly in a folder lets say `genome`
