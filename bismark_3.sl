@@ -1,4 +1,4 @@
-!/bin/bash -e 
+#!/bin/bash -e 
 
 #SBATCH --nodes 1 
 #SBATCH --cpus-per-task 1 
